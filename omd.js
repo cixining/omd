@@ -7,6 +7,22 @@ import { resolve, extname } from "path";
 import { renderMarkdown } from "./renderer.js";
 import { createTheme } from "./theme.js";
 
+const HELP = `omd — Render markdown with ANSI terminal styling
+
+Usage: omd [options] [file]
+
+Options:
+  --dark         Force dark theme
+  --light        Force light theme
+  --no-hyperlinks  Disable hyperlinks
+  --help, -h     Show this help
+  --version      Show version
+
+Examples:
+  omd README.md
+  omd --dark README.md
+  cat README.md | omd`;
+
 const args = process.argv.slice(2);
 const flags = args.filter((a) => a.startsWith("--"));
 const files = args.filter((a) => !a.startsWith("--"));
@@ -14,6 +30,19 @@ const files = args.filter((a) => !a.startsWith("--"));
 // Use null for auto, true/false for explicit mode
 const dark = flags.includes("--dark") ? true : flags.includes("--light") ? false : null;
 const noLinks = flags.includes("--no-hyperlinks");
+
+// Handle --help / -h before anything else
+if (flags.includes("--help") || flags.includes("-h")) {
+  console.log(HELP);
+  process.exit(0);
+}
+
+// Handle --version
+if (flags.includes("--version")) {
+  const { version } = JSON.parse(readFileSync(new URL("package.json", import.meta.url), "utf-8"));
+  console.log("omd v" + version);
+  process.exit(0);
+}
 
 async function main() {
   let markdown;
