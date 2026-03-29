@@ -5,7 +5,7 @@ Render markdown files with ANSI terminal styling — syntax-highlighted code blo
 ## Installation
 
 ```bash
-# Clone (shallow, no git history)
+# Clone and install from source
 git clone --depth 1 https://github.com/cixining/omd.git
 cd omd
 npm install
