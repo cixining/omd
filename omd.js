@@ -42,7 +42,7 @@ async function main() {
         "┐"
     );
 
-    const result = renderMarkdown(markdown, {
+    const result = await renderMarkdown(markdown, {
       dark,
       hyperlinks: !noLinks,
     });
@@ -59,7 +59,7 @@ async function main() {
     if (!data.trim()) process.exit(0);
     markdown = data;
 
-    const result = renderMarkdown(markdown, {
+    const result = await renderMarkdown(markdown, {
       dark,
       hyperlinks: !noLinks,
     });
