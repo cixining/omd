@@ -16,7 +16,7 @@ Options:
   -l, --light         Force light theme
   --no-hyperlinks     Disable hyperlinks
   -h, --help          Show this help
-  --version           Show version
+  -v, --version       Show version
 
 Examples:
   omd README.md
@@ -39,8 +39,8 @@ if (shortFlags.includes("-h") || flags.includes("--help")) {
   process.exit(0);
 }
 
-// Handle --version
-if (flags.includes("--version")) {
+// Handle -v / --version
+if (shortFlags.includes("-v") || flags.includes("--version")) {
   const { version } = JSON.parse(readFileSync(new URL("package.json", import.meta.url), "utf-8"));
   console.log("omd v" + version);
   process.exit(0);
