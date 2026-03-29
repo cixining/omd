@@ -12,27 +12,29 @@ const HELP = `omd — Render markdown with ANSI terminal styling
 Usage: omd [options] [file]
 
 Options:
-  --dark         Force dark theme
-  --light        Force light theme
-  --no-hyperlinks  Disable hyperlinks
-  --help, -h     Show this help
-  --version      Show version
+  -d, --dark          Force dark theme
+  -l, --light         Force light theme
+  --no-hyperlinks     Disable hyperlinks
+  -h, --help          Show this help
+  --version           Show version
 
 Examples:
   omd README.md
+  omd -d README.md
   omd --dark README.md
   cat README.md | omd`;
 
 const args = process.argv.slice(2);
 const flags = args.filter((a) => a.startsWith("--"));
-const files = args.filter((a) => !a.startsWith("--"));
+const shortFlags = args.filter((a) => /^-\w$/.test(a));
+const files = args.filter((a) => !a.startsWith("-"));
 
 // Use null for auto, true/false for explicit mode
-const dark = flags.includes("--dark") ? true : flags.includes("--light") ? false : null;
+const dark = shortFlags.includes("-d") ? true : shortFlags.includes("-l") ? false : null;
 const noLinks = flags.includes("--no-hyperlinks");
 
-// Handle --help / -h before anything else
-if (flags.includes("--help") || flags.includes("-h")) {
+// Handle -h / --help before anything else
+if (shortFlags.includes("-h") || flags.includes("--help")) {
   console.log(HELP);
   process.exit(0);
 }
