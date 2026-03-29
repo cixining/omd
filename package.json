@@ -1,0 +1,33 @@
+{
+  "name": "omd",
+  "version": "1.0.0",
+  "description": "Render markdown files with ANSI terminal styling — tables, syntax highlighting, hyperlinks",
+  "type": "module",
+  "main": "omd.js",
+  "bin": {
+    "omd": "./omd.js"
+  },
+  "scripts": {
+    "start": "node omd.js"
+  },
+  "dependencies": {
+    "cli-highlight": "^2.1.11",
+    "marked": "^14.1.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "markdown",
+    "terminal",
+    "ansi",
+    "tui",
+    "cli"
+  ],
+  "author": "cixining",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cixining/omd"
+  }
+}

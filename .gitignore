@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output (if you add a bundler later)
+dist/
+
+# OS files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Editor directories
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Optional npm lockfile (use package-lock.json if you want exact versions committed)
+# package-lock.json
+
+# Environment files
+.env
+.env.local
